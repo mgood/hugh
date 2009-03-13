@@ -446,6 +446,11 @@ class Widget(_Renderable):
         return ErrorList()
 
     @property
+    def required(self):
+        """Whether the field is required."""
+        return getattr(self._field, 'required', False)
+
+    @property
     def all_errors(self):
         """The current errors and the errors of all child widgets."""
         items = sorted(self._all_errors.items())
