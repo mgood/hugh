@@ -523,8 +523,26 @@ class Input(Widget):
 
 
 class TextInput(Input):
-    """A widget that holds text."""
+    """A widget that holds text.
+
+    If this widget's field has a "max_length" attribute it will be set in the
+    form field:
+
+    >>> def text_widget(**field_attrs):
+    ...     return _make_widget(TextField(**field_attrs), 'name', None, {})
+
+    >>> print text_widget()()
+    <input type="text" name="name" value="" id="f_name">
+
+    >>> print text_widget(max_length=100)()
+    <input maxlength="100" type="text" name="name" value="" id="f_name">
+    """
     type = 'text'
+
+    def _attr_setdefault(self, attrs):
+        Input._attr_setdefault(self, attrs)
+        if hasattr(self._field, 'max_length'):
+          attrs.setdefault('maxlength', self._field.max_length)
 
 
 class PasswordInput(TextInput):
