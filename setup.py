@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 setup(
     name='Hugh',
     version='0.1',
-    packages=['hugh'],
+    packages=find_packages(),
     install_requires = [
         'Werkzeug',
     ],
