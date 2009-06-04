@@ -114,6 +114,8 @@ class USStateField(forms.TextField):
 
     def convert(self, value):
         value = forms.TextField.convert(self, value)
+        if not value and not self.required:
+          return None
         value = value.upper()
         if value not in states.VALID_STATE_CODES:
             raise validators.ValidationError(self.messages['invalid_state'])
