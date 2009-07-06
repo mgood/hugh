@@ -55,6 +55,12 @@ class USPhoneNumberField(forms.TextField):
     >>> field('1.(555)   555 - 5555')
     u'555-555-5555'
 
+    Extensions should work:
+    >>> field('1.(555)   555 - 5555 x1234')
+    u'555-555-5555 x1234'
+    >>> field('1.(555)   555 - 5555  extension 1234')
+    u'555-555-5555 x1234'
+
     Note that area codes cannot begin with a "1" or a "0":
     >>> field('155-555-5555')
     Traceback (most recent call last):
@@ -70,7 +76,24 @@ class USPhoneNumberField(forms.TextField):
     Traceback (most recent call last):
       ...
     ValidationError: Please enter a phone number with area code in the format
-    555-867-5309
+    555-867-5309 x1234
+
+    Bad extension format should not work:
+    >>> field('055-555-5555 xcsdfjksd')         #doctest: +NORMALIZE_WHITESPACE
+    Traceback (most recent call last):
+      ...
+    ValidationError: Please enter a phone number with area code in the format
+    555-867-5309 x1234
+    >>> field('055-555-5555 extension foo')     #doctest: +NORMALIZE_WHITESPACE
+    Traceback (most recent call last):
+      ...
+    ValidationError: Please enter a phone number with area code in the format
+    555-867-5309 x1234
+    >>> field('555-555-55555555')     #doctest: +NORMALIZE_WHITESPACE
+    Traceback (most recent call last):
+      ...
+    ValidationError: Please enter a phone number with area code in the format
+    555-867-5309 x1234
 
     The value may be empty if it is not marked as required:
     >>> USPhoneNumberField(required=True)('')
@@ -80,12 +103,12 @@ class USPhoneNumberField(forms.TextField):
     >>> USPhoneNumberField(required=False)('')
     u''
     """
-    _phone_digits_re = re.compile(r'^1?(\d{3})(\d{3})(\d{4})$')
+    _phone_digits_re = re.compile(r'^1?(\d{3})(\d{3})(\d{4})(\D+(\d+))?$')
     _phone_digits_strip_re = re.compile(r'[-\.()\s]')
 
     messages = dict(
         invalid_phone = (u'Please enter a phone number with area code in the'
-                         ' format 555-867-5309'),
+                         ' format 555-867-5309 x1234'),
         bad_area_code = u'Phone area codes cannot begin with a "1" or "0"',
     )
 
@@ -99,7 +122,10 @@ class USPhoneNumberField(forms.TextField):
             raise validators.ValidationError(self.messages['invalid_phone'])
         if match.group(1)[0] in '01':
             raise validators.ValidationError(self.messages['bad_area_code'])
-        return u'-'.join(match.groups())
+        phone_num = u'-'.join([match.group(1), match.group(2), match.group(3)])
+        if match.group(5):
+          phone_num += u' x' + match.group(5)
+        return phone_num
 
 
 class USStateField(forms.TextField):
