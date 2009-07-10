@@ -214,9 +214,18 @@ def _force_list(value):
         return [value]
 
 
-def _make_widget(field, name, value, errors):
+def _make_widget(field, name, value, errors, id_prefix=None):
     """Shortcut for widget creation."""
-    return field.widget(field, name, value, errors)
+    if id_prefix is not None:
+        try:
+            return field.widget(field, name, value, errors, id_prefix=id_prefix)
+        except TypeError:
+            pass
+    # in case the widget subclass doesn't have a parameter for id_prefix,
+    # fallback on the old __init__ & then set the prefix directly
+    widget = field.widget(field, name, value, errors)
+    widget._id_prefix = id_prefix
+    return widget
 
 
 def _make_name(parent, child):
@@ -381,10 +390,11 @@ class Widget(_Renderable):
 
     disable_dt = False
 
-    def __init__(self, field, name, value, all_errors):
+    def __init__(self, field, name, value, all_errors, id_prefix=None):
         self._field = field
         self._value = value
         self._all_errors = all_errors
+        self._id_prefix = id_prefix
         self.name = name
 
     def hidden(self):
@@ -419,7 +429,10 @@ class Widget(_Renderable):
     def id(self):
         """The proposed id for this widget."""
         if self.name is not None:
-            return 'f_' + self.name.replace('.', '__')
+            prefix = 'f_'
+            if self._id_prefix:
+                prefix += self._id_prefix + '_'
+            return prefix + self.name.replace('.', '__')
 
     @property
     def value(self):
@@ -648,7 +661,7 @@ class _InputGroupMember(InternalWidget):
 
     @property
     def id(self):
-        return 'f_%s_%s' % (self._parent.name, self.value)
+        return '%s_%s' % (self._parent.id, self.value)
 
     @property
     def checked(self):
@@ -673,8 +686,9 @@ class GroupCheckbox(_InputGroupMember):
 
 class _InputGroup(Widget):
 
-    def __init__(self, field, name, value, all_errors):
-        Widget.__init__(self, field, name, value, all_errors)
+    def __init__(self, field, name, value, all_errors, id_prefix=None):
+        Widget.__init__(self, field, name, value, all_errors,
+                        id_prefix=id_prefix)
         self.choices = []
         self._subwidgets = {}
         for value, label in _iter_choices(self._field.choices):
@@ -749,7 +763,8 @@ class MappingWidget(Widget):
             subwidget = _make_widget(self._field.fields[name],
                                      _make_name(self.name, name),
                                      self._value.get(name),
-                                     self._all_errors)
+                                     self._all_errors,
+                                     self._id_prefix)
             self._subwidgets[name] = subwidget
         return subwidget
 
@@ -869,7 +884,8 @@ class ListWidget(Widget):
                 value = None
             subwidget = _make_widget(self._field.field,
                                      _make_name(self.name, index), value,
-                                     self._all_errors)
+                                     self._all_errors,
+                                     self._id_prefix)
             self._subwidgets[index] = subwidget
         return subwidget
 
@@ -1863,15 +1879,34 @@ class Form(object):
     def __contains__(self, key):
         return key in self.data
 
-    def as_widget(self):
-        """Return the form as widget."""
+    def as_widget(self, id_prefix=None):
+        """Return the form as widget. If an id_prefix is provided this will
+        be added to the id attributes of all fields. This can be used to avoid
+        id conflicts between multiple forms on the same page.
+
+        The default rendering of a form field includes only the name of the
+        field, so if multiple forms on the same page both had a field named
+        "the_field" their ids would conflict.
+
+        >>> class MyForm(Form):
+        ...     the_field = TextField()
+        >>> MyForm().as_widget()['the_field'].render()
+        u'<input type="text" name="the_field" value="" id="f_the_field">'
+
+        If an id_prefix is provided it is inserted before the field name so
+        that each form's fields will have unique ids.
+
+        >>> MyForm().as_widget(id_prefix="my_form")['the_field'].render()
+        u'<input type="text" name="the_field" value="" id="f_my_form_the_field">'
+        """
         # if there is submitted data, use that for the widget
         if self.raw_data is not None:
             data = self.raw_data
         # otherwise go with the data from the source (eg: database)
         else:
             data = self.data
-        return _make_widget(self._root_field, None, data, self.errors)
+        return _make_widget(self._root_field, None, data, self.errors,
+                            id_prefix)
 
     def add_invalid_redirect_target(self, *args, **kwargs):
         """Add an invalid target. Invalid targets are URLs we don't want to
