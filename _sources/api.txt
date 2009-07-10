@@ -1,0 +1,18 @@
+*****************
+API Documentation
+*****************
+
+Module :mod:`hugh.forms`
+===============================
+
+.. automodule:: hugh.forms
+   :members:
+   :synopsis: Form and fields
+
+
+Module :mod:`hugh.validators`
+===============================
+
+.. automodule:: hugh.validators
+   :members:
+   :synopsis: Validation functions

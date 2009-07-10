@@ -1,0 +1,1117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>API Documentation &mdash; Hugh v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Hugh v0.1 documentation" href="index.html" />
+    <link rel="prev" title="Welcome to Hugh’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Hugh’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Hugh v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="api-documentation">
+<h1>API Documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-hugh.forms">
+<h2>Module <tt class="xref docutils literal"><span class="pre">hugh.forms</span></tt><a class="headerlink" href="#module-hugh.forms" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="hugh-forms">
+<h3>hugh.forms<a class="headerlink" href="#hugh-forms" title="Permalink to this headline">¶</a></h3>
+<p>This module implements a sophisticated form validation and rendering
+system that is based on diva with concepts from django newforms and
+wtforms incorporated.</p>
+<p>It can validate nested structures and works in both ways.  It also
+supports basic CSRF protection.</p>
+<p>For usage informations see <a title="hugh.forms.Form" class="reference internal" href="#hugh.forms.Form"><tt class="xref docutils literal"><span class="pre">Form</span></tt></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">copyright:</th><td class="field-body"><ol class="first loweralpha simple" start="3">
+<li>2009 by the Zine Team, see AUTHORS for more details.</li>
+</ol>
+</td>
+</tr>
+<tr class="field"><th class="field-name">license:</th><td class="field-body"><p class="first last">BSD, see LICENSE for more details.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="hugh.forms.BooleanField">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">BooleanField</tt><big>(</big><em>label=None</em>, <em>help_text=None</em>, <em>validators=None</em>, <em>widget=None</em>, <em>messages=None</em>, <em>default=no default</em><big>)</big><a class="headerlink" href="#hugh.forms.BooleanField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Field for boolean values.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">field</span> <span class="o">=</span> <span class="n">BooleanField</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field</span><span class="p">(</span><span class="s">&#39;1&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">field</span> <span class="o">=</span> <span class="n">BooleanField</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="hugh.forms.BooleanField.widget">
+<tt class="descname">widget</tt><a class="headerlink" href="#hugh.forms.BooleanField.widget" title="Permalink to this definition">¶</a></dt>
+<dd>alias of <a title="hugh.forms.Checkbox" class="reference internal" href="#hugh.forms.Checkbox"><tt class="xref docutils literal"><span class="pre">Checkbox</span></tt></a></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.Checkbox">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">Checkbox</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.Checkbox" title="Permalink to this definition">¶</a></dt>
+<dd><p>A simple checkbox.</p>
+<dl class="method">
+<dt id="hugh.forms.Checkbox.as_dd">
+<tt class="descname">as_dd</tt><big>(</big><em>**attrs</em><big>)</big><a class="headerlink" href="#hugh.forms.Checkbox.as_dd" title="Permalink to this definition">¶</a></dt>
+<dd>Return a dt/dd item.</dd></dl>
+
+<dl class="method">
+<dt id="hugh.forms.Checkbox.as_li">
+<tt class="descname">as_li</tt><big>(</big><em>**attrs</em><big>)</big><a class="headerlink" href="#hugh.forms.Checkbox.as_li" title="Permalink to this definition">¶</a></dt>
+<dd>Return a li item.</dd></dl>
+
+<dl class="method">
+<dt id="hugh.forms.Checkbox.with_help_text">
+<tt class="descname">with_help_text</tt><big>(</big><em>**attrs</em><big>)</big><a class="headerlink" href="#hugh.forms.Checkbox.with_help_text" title="Permalink to this definition">¶</a></dt>
+<dd>Render the checkbox with help text.</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.CheckboxGroup">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">CheckboxGroup</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.CheckboxGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>A group of checkboxes.</p>
+<dl class="attribute">
+<dt id="hugh.forms.CheckboxGroup.subwidget">
+<tt class="descname">subwidget</tt><a class="headerlink" href="#hugh.forms.CheckboxGroup.subwidget" title="Permalink to this definition">¶</a></dt>
+<dd>alias of <a title="hugh.forms.GroupCheckbox" class="reference internal" href="#hugh.forms.GroupCheckbox"><tt class="xref docutils literal"><span class="pre">GroupCheckbox</span></tt></a></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.ChoiceField">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">ChoiceField</tt><big>(</big><em>label=None</em>, <em>help_text=None</em>, <em>required=True</em>, <em>choices=None</em>, <em>validators=None</em>, <em>widget=None</em>, <em>messages=None</em>, <em>default=no default</em><big>)</big><a class="headerlink" href="#hugh.forms.ChoiceField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A field that lets a user select one out of many choices.</p>
+<p>A choice field accepts some choices that are valid values for it.
+Values are compared after converting to unicode which means that
+<tt class="docutils literal"><span class="pre">1</span> <span class="pre">==</span> <span class="pre">&quot;1&quot;</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">field</span> <span class="o">=</span> <span class="n">ChoiceField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="mf">1</span><span class="p">,</span> <span class="mf">2</span><span class="p">,</span> <span class="mf">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field</span><span class="p">(</span><span class="s">&#39;1&#39;</span><span class="p">)</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field</span><span class="p">(</span><span class="s">&#39;42&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  <span class="c">...</span>
+<span class="nc">ValidationError</span>: <span class="n-Identifier">Please enter a valid choice.</span>
+</pre></div>
+</div>
+<p>Two values <cite>a</cite> and <cite>b</cite> are considered equal if either <tt class="docutils literal"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">b</span></tt> or
+<tt class="docutils literal"><span class="pre">primitive(a)</span> <span class="pre">==</span> <span class="pre">primitive(b)</span></tt> where <cite>primitive</cite> is the primitive
+of the value.  Primitives are created with the following algorithm:</p>
+<blockquote>
+<ol class="arabic simple">
+<li>if the object is <cite>None</cite> the primitive is the empty string</li>
+<li>otherwise the primitive is the string value of the object</li>
+</ol>
+</blockquote>
+<p>A choice field also accepts lists of tuples as argument where the
+first item is used for comparing and the second for displaying
+(which is used by the <cite>SelectBoxWidget</cite>):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">field</span> <span class="o">=</span> <span class="n">ChoiceField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[(</span><span class="mf">0</span><span class="p">,</span> <span class="s">&#39;inactive&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">1</span><span class="p">,</span> <span class="s">&#39;active&#39;</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field</span><span class="p">(</span><span class="s">&#39;0&#39;</span><span class="p">)</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+<p>Because all fields are bound to the form before validation it&#8217;s
+possible to assign the choices later:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MyForm</span><span class="p">(</span><span class="n">Form</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">status</span> <span class="o">=</span> <span class="n">ChoiceField</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">form</span> <span class="o">=</span> <span class="n">MyForm</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">form</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">choices</span> <span class="o">=</span> <span class="p">[(</span><span class="mf">0</span><span class="p">,</span> <span class="s">&#39;inactive&#39;</span><span class="p">,</span> <span class="mf">1</span><span class="p">,</span> <span class="s">&#39;active&#39;</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">form</span><span class="o">.</span><span class="n">validate</span><span class="p">({</span><span class="s">&#39;status&#39;</span><span class="p">:</span> <span class="s">&#39;0&#39;</span><span class="p">})</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">form</span><span class="o">.</span><span class="n">data</span>
+<span class="go">{&#39;status&#39;: 0}</span>
+</pre></div>
+</div>
+<p>If a choice field is set to &#8220;not required&#8221; and a <cite>SelectBox</cite> is used
+as widget you have to provide an empty choice or the field cannot be
+left blank.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">field</span> <span class="o">=</span> <span class="n">ChoiceField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[(</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">_</span><span class="p">(</span><span class="s">&#39;Nothing&#39;</span><span class="p">)),</span>
+<span class="gp">... </span>                                             <span class="p">(</span><span class="s">&#39;1&#39;</span><span class="p">,</span> <span class="n">_</span><span class="p">(</span><span class="s">&#39;Something&#39;</span><span class="p">))])</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="hugh.forms.ChoiceField.widget">
+<tt class="descname">widget</tt><a class="headerlink" href="#hugh.forms.ChoiceField.widget" title="Permalink to this definition">¶</a></dt>
+<dd>alias of <a title="hugh.forms.SelectBox" class="reference internal" href="#hugh.forms.SelectBox"><tt class="xref docutils literal"><span class="pre">SelectBox</span></tt></a></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.CommaSeparated">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">CommaSeparated</tt><big>(</big><em>field</em>, <em>label=None</em>, <em>help_text=None</em>, <em>min_size=None</em>, <em>max_size=None</em>, <em>sep=u'</em>, <em>'</em>, <em>validators=None</em>, <em>widget=None</em>, <em>messages=None</em>, <em>default=no default</em><big>)</big><a class="headerlink" href="#hugh.forms.CommaSeparated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Works like the multiple field but for comma separated values:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">field</span> <span class="o">=</span> <span class="n">CommaSeparated</span><span class="p">(</span><span class="n">IntegerField</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field</span><span class="p">(</span><span class="s">u&#39;1, 2, 3&#39;</span><span class="p">)</span>
+<span class="go">[1, 2, 3]</span>
+</pre></div>
+</div>
+<p>The default widget is a <cite>TextInput</cite> but <cite>Textarea</cite> would be a possible
+choices as well.</p>
+<dl class="attribute">
+<dt id="hugh.forms.CommaSeparated.widget">
+<tt class="descname">widget</tt><a class="headerlink" href="#hugh.forms.CommaSeparated.widget" title="Permalink to this definition">¶</a></dt>
+<dd>alias of <a title="hugh.forms.TextInput" class="reference internal" href="#hugh.forms.TextInput"><tt class="xref docutils literal"><span class="pre">TextInput</span></tt></a></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.DateTimeField">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">DateTimeField</tt><big>(</big><em>label=None</em>, <em>help_text=None</em>, <em>required=False</em>, <em>rebase=True</em>, <em>validators=None</em>, <em>widget=None</em>, <em>messages=None</em>, <em>default=no default</em><big>)</big><a class="headerlink" href="#hugh.forms.DateTimeField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Field for datetime objects.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">field</span> <span class="o">=</span> <span class="n">DateTimeField</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field</span><span class="p">(</span><span class="s">&#39;1970-01-12 00:00&#39;</span><span class="p">)</span>
+<span class="go">datetime.datetime(1970, 1, 12, 0, 0)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">field</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  <span class="c">...</span>
+<span class="nc">ValidationError</span>: <span class="n-Identifier">Please enter a valid date.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.ErrorList">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">ErrorList</tt><a class="headerlink" href="#hugh.forms.ErrorList" title="Permalink to this definition">¶</a></dt>
+<dd>The class that is used to display the errors.</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.Field">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">Field</tt><big>(</big><em>label=None</em>, <em>help_text=None</em>, <em>validators=None</em>, <em>widget=None</em>, <em>messages=None</em>, <em>default=no default</em><big>)</big><a class="headerlink" href="#hugh.forms.Field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract field base class.</p>
+<dl class="method">
+<dt id="hugh.forms.Field.apply_validators">
+<tt class="descname">apply_validators</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#hugh.forms.Field.apply_validators" title="Permalink to this definition">¶</a></dt>
+<dd>Applies all validators on the value.</dd></dl>
+
+<dl class="attribute">
+<dt id="hugh.forms.Field.bound">
+<tt class="descname">bound</tt><a class="headerlink" href="#hugh.forms.Field.bound" title="Permalink to this definition">¶</a></dt>
+<dd>True if the form is bound.</dd></dl>
+
+<dl class="method">
+<dt id="hugh.forms.Field.convert">
+<tt class="descname">convert</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#hugh.forms.Field.convert" title="Permalink to this definition">¶</a></dt>
+<dd>This can be overridden by subclasses and performs the value
+conversion.</dd></dl>
+
+<dl class="method">
+<dt id="hugh.forms.Field.should_validate">
+<tt class="descname">should_validate</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#hugh.forms.Field.should_validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Per default validate if the value is not None.  This method is
+called before the custom validators are applied to not perform
+validation if the field is empty and not required.</p>
+<p>For example a validator like <cite>is_valid_ip</cite> is never called if the
+value is an empty string and the field hasn&#8217;t raised a validation
+error when checking if the field is required.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hugh.forms.Field.to_primitive">
+<tt class="descname">to_primitive</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#hugh.forms.Field.to_primitive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a value into a primitve (string or a list/dict of lists,
+dicts or strings).</p>
+<p>This method must never fail!</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hugh.forms.Field.widget">
+<tt class="descname">widget</tt><a class="headerlink" href="#hugh.forms.Field.widget" title="Permalink to this definition">¶</a></dt>
+<dd>alias of <a title="hugh.forms.TextInput" class="reference internal" href="#hugh.forms.TextInput"><tt class="xref docutils literal"><span class="pre">TextInput</span></tt></a></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.Form">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">Form</tt><big>(</big><em>request=None</em>, <em>initial=None</em><big>)</big><a class="headerlink" href="#hugh.forms.Form" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form base class.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">PersonForm</span><span class="p">(</span><span class="n">Form</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">name</span> <span class="o">=</span> <span class="n">TextField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">age</span> <span class="o">=</span> <span class="n">IntegerField</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">form</span> <span class="o">=</span> <span class="n">PersonForm</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">form</span><span class="o">.</span><span class="n">validate</span><span class="p">({</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;johnny&#39;</span><span class="p">,</span> <span class="s">&#39;age&#39;</span><span class="p">:</span> <span class="s">&#39;42&#39;</span><span class="p">})</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">form</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+<span class="go">u&#39;johnny&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">form</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;age&#39;</span><span class="p">]</span>
+<span class="go">42</span>
+</pre></div>
+</div>
+<p>Let&#8217;s cause a simple validation error:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">form</span> <span class="o">=</span> <span class="n">PersonForm</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">form</span><span class="o">.</span><span class="n">validate</span><span class="p">({</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;age&#39;</span><span class="p">:</span> <span class="s">&#39;fourty-two&#39;</span><span class="p">})</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">form</span><span class="o">.</span><span class="n">errors</span><span class="p">[</span><span class="s">&#39;age&#39;</span><span class="p">][</span><span class="mf">0</span><span class="p">]</span>
+<span class="go">Please enter a whole number.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">form</span><span class="o">.</span><span class="n">errors</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">][</span><span class="mf">0</span><span class="p">]</span>
+<span class="go">This field is required.</span>
+</pre></div>
+</div>
+<p>You can also add custom validation routines for fields by adding methods
+that start with the prefix <tt class="docutils literal"><span class="pre">validate_</span></tt> and the field name that take the
+value as argument. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">PersonForm</span><span class="p">(</span><span class="n">Form</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">name</span> <span class="o">=</span> <span class="n">TextField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">age</span> <span class="o">=</span> <span class="n">IntegerField</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">validate_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
+<span class="gp">... </span>            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s">u&#39;The value must only contain letters&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">form</span> <span class="o">=</span> <span class="n">PersonForm</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">form</span><span class="o">.</span><span class="n">validate</span><span class="p">({</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;mr.t&#39;</span><span class="p">,</span> <span class="s">&#39;age&#39;</span><span class="p">:</span> <span class="s">&#39;42&#39;</span><span class="p">})</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">form</span><span class="o">.</span><span class="n">errors</span>
+<span class="go">{&#39;name&#39;: [u&#39;The value must only contain letters&#39;]}</span>
+</pre></div>
+</div>
+<p>You can also validate multiple fields in the context of other fields.
+That validation is performed after all other validations.  Just add a
+method called <tt class="docutils literal"><span class="pre">context_validate</span></tt> that is passed the dict of all fields:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">RegisterForm</span><span class="p">(</span><span class="n">Form</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>...     username = TextField(required=True)
+...     password = TextField(required=True)
+...     password_again = TextField(required=True)
+...
+...     def context_validate(self, data):
+...         if data[&#8216;password&#8217;] != data[&#8216;password_again&#8217;]:
+...             raise ValidationError(u&#8217;The two passwords must be the same&#8217;)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">form</span> <span class="o">=</span> <span class="n">RegisterForm</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">form</span><span class="o">.</span><span class="n">validate</span><span class="p">({</span><span class="s">&#39;username&#39;</span><span class="p">:</span> <span class="s">&#39;admin&#39;</span><span class="p">,</span> <span class="s">&#39;password&#39;</span><span class="p">:</span> <span class="s">&#39;blah&#39;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="s">&#39;password_again&#39;</span><span class="p">:</span> <span class="s">&#39;blag&#39;</span><span class="p">})</span>
+<span class="gp">...</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">form</span><span class="o">.</span><span class="n">errors</span>
+<span class="go">{None: [u&#39;The two passwords must be the same&#39;]}</span>
+</pre></div>
+</div>
+<p>Forms can be used as fields for other forms.  To create a form field of
+a form you can call the <cite>as_field</cite> class method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">field</span> <span class="o">=</span> <span class="n">RegisterForm</span><span class="o">.</span><span class="n">as_field</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This field can be used like any other field class.  What&#8217;s important about
+forms as fields is that validators don&#8217;t get an instance of <cite>RegisterForm</cite>
+passed as <cite>form</cite> / <cite>self</cite> but the form where it&#8217;s used in if the field is
+used from a form.</p>
+<p>Form fields are bound to the form on form instanciation.  This makes it
+possible to modify a particular instance of the form.  For example you
+can create an instance of it and drop some fiels by using
+<tt class="docutils literal"><span class="pre">del</span> <span class="pre">form.fields['name']</span></tt> or reassign choices of choice fields.  It&#8217;s
+however not easily possible to add new fields to an instance because newly
+added fields wouldn&#8217;t be bound.  The fields that are stored directly on
+the form can also be accessed with their name like a regular attribute.</p>
+<p>Example usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">StatusForm</span><span class="p">(</span><span class="n">Form</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">status</span> <span class="o">=</span> <span class="n">ChoiceField</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">StatusForm</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">bound</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">form</span> <span class="o">=</span> <span class="n">StatusForm</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">form</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">bound</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">form</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">choices</span> <span class="o">=</span> <span class="p">[</span><span class="s">u&#39;happy&#39;</span><span class="p">,</span> <span class="s">u&#39;unhappy&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">form</span><span class="o">.</span><span class="n">validate</span><span class="p">({</span><span class="s">&#39;status&#39;</span><span class="p">:</span> <span class="s">u&#39;happy&#39;</span><span class="p">})</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">form</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">]</span>
+<span class="go">u&#39;happy&#39;</span>
+</pre></div>
+</div>
+<p>Fields support default values.  These however are not as useful as you
+might think.  These defaults are just annotations for external handling.
+The form validation system does not respect those values.</p>
+<p>They are for example used in the configuration system.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">field</span> <span class="o">=</span> <span class="n">TextField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">u&#39;foo&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="hugh.forms.Form.add_invalid_redirect_target">
+<tt class="descname">add_invalid_redirect_target</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#hugh.forms.Form.add_invalid_redirect_target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an invalid target. Invalid targets are URLs we don&#8217;t want to
+visit again. For example if a post is deleted from the post edit page
+it&#8217;s a bad idea to redirect back to the edit page because in that
+situation the edit page would return a page not found.</p>
+<p>This function accepts the same parameters as <cite>url_for</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hugh.forms.Form.as_widget">
+<tt class="descname">as_widget</tt><big>(</big><big>)</big><a class="headerlink" href="#hugh.forms.Form.as_widget" title="Permalink to this definition">¶</a></dt>
+<dd>Return the form as widget.</dd></dl>
+
+<dl class="attribute">
+<dt id="hugh.forms.Form.csrf_token">
+<tt class="descname">csrf_token</tt><a class="headerlink" href="#hugh.forms.Form.csrf_token" title="Permalink to this definition">¶</a></dt>
+<dd>The unique CSRF security token for this form.</dd></dl>
+
+<dl class="attribute">
+<dt id="hugh.forms.Form.has_changed">
+<tt class="descname">has_changed</tt><a class="headerlink" href="#hugh.forms.Form.has_changed" title="Permalink to this definition">¶</a></dt>
+<dd>True if the form has changed.</dd></dl>
+
+<dl class="attribute">
+<dt id="hugh.forms.Form.is_valid">
+<tt class="descname">is_valid</tt><a class="headerlink" href="#hugh.forms.Form.is_valid" title="Permalink to this definition">¶</a></dt>
+<dd>True if the form is valid.</dd></dl>
+
+<dl class="method">
+<dt id="hugh.forms.Form.redirect">
+<tt class="descname">redirect</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#hugh.forms.Form.redirect" title="Permalink to this definition">¶</a></dt>
+<dd>Redirects to the url rule given or back to the URL where we are
+comming from if <cite>redirect_tracking</cite> is enabled.</dd></dl>
+
+<dl class="attribute">
+<dt id="hugh.forms.Form.redirect_target">
+<tt class="descname">redirect_target</tt><a class="headerlink" href="#hugh.forms.Form.redirect_target" title="Permalink to this definition">¶</a></dt>
+<dd>The back-redirect target for this form.</dd></dl>
+
+<dl class="method">
+<dt id="hugh.forms.Form.reset">
+<tt class="descname">reset</tt><big>(</big><big>)</big><a class="headerlink" href="#hugh.forms.Form.reset" title="Permalink to this definition">¶</a></dt>
+<dd>Resets the form.</dd></dl>
+
+<dl class="method">
+<dt id="hugh.forms.Form.validate">
+<tt class="descname">validate</tt><big>(</big><em>data</em><big>)</big><a class="headerlink" href="#hugh.forms.Form.validate" title="Permalink to this definition">¶</a></dt>
+<dd>Validate the form against the data passed.</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.FormAsField">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">FormAsField</tt><a class="headerlink" href="#hugh.forms.FormAsField" title="Permalink to this definition">¶</a></dt>
+<dd>If a form is converted into a field the returned field object is an
+instance of this class.  The behavior is mostly equivalent to a normal
+<a title="hugh.forms.Mapping" class="reference internal" href="#hugh.forms.Mapping"><tt class="xref docutils literal"><span class="pre">Mapping</span></tt></a> field with the difference that it as an attribute called
+<tt class="xref docutils literal"><span class="pre">form_class</span></tt> that points to the form class it was created from.</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.FormMapping">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">FormMapping</tt><big>(</big><em>*args</em>, <em>**fields</em><big>)</big><a class="headerlink" href="#hugh.forms.FormMapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like a mapping but does csrf protection and stuff.</p>
+<dl class="attribute">
+<dt id="hugh.forms.FormMapping.widget">
+<tt class="descname">widget</tt><a class="headerlink" href="#hugh.forms.FormMapping.widget" title="Permalink to this definition">¶</a></dt>
+<dd>alias of <a title="hugh.forms.FormWidget" class="reference internal" href="#hugh.forms.FormWidget"><tt class="xref docutils literal"><span class="pre">FormWidget</span></tt></a></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.FormMeta">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">FormMeta</tt><a class="headerlink" href="#hugh.forms.FormMeta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Meta class for forms.  Handles form inheritance and registers
+validator functions.</p>
+<dl class="method">
+<dt id="hugh.forms.FormMeta.as_field">
+<tt class="descname">as_field</tt><big>(</big><big>)</big><a class="headerlink" href="#hugh.forms.FormMeta.as_field" title="Permalink to this definition">¶</a></dt>
+<dd>Returns a field object for this form.  The field object returned
+is independent of the form and can be modified in the same manner as
+a bound field.</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.FormWidget">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">FormWidget</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.FormWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>A widget for forms.</p>
+<dl class="attribute">
+<dt id="hugh.forms.FormWidget.csrf_token">
+<tt class="descname">csrf_token</tt><a class="headerlink" href="#hugh.forms.FormWidget.csrf_token" title="Permalink to this definition">¶</a></dt>
+<dd>Forward the CSRF check token for templates.</dd></dl>
+
+<dl class="method">
+<dt id="hugh.forms.FormWidget.default_actions">
+<tt class="descname">default_actions</tt><big>(</big><em>**attrs</em><big>)</big><a class="headerlink" href="#hugh.forms.FormWidget.default_actions" title="Permalink to this definition">¶</a></dt>
+<dd>Returns a default action div with a submit button.</dd></dl>
+
+<dl class="method">
+<dt id="hugh.forms.FormWidget.get_hidden_fields">
+<tt class="descname">get_hidden_fields</tt><big>(</big><big>)</big><a class="headerlink" href="#hugh.forms.FormWidget.get_hidden_fields" title="Permalink to this definition">¶</a></dt>
+<dd>This method is called by the <cite>hidden_fields</cite> property to return
+a list of (key, value) pairs for the special hidden fields.</dd></dl>
+
+<dl class="attribute">
+<dt id="hugh.forms.FormWidget.hidden_fields">
+<tt class="descname">hidden_fields</tt><a class="headerlink" href="#hugh.forms.FormWidget.hidden_fields" title="Permalink to this definition">¶</a></dt>
+<dd>The hidden fields as string.</dd></dl>
+
+<dl class="attribute">
+<dt id="hugh.forms.FormWidget.redirect_target">
+<tt class="descname">redirect_target</tt><a class="headerlink" href="#hugh.forms.FormWidget.redirect_target" title="Permalink to this definition">¶</a></dt>
+<dd>The redirect target for this form.</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.GroupCheckbox">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">GroupCheckbox</tt><big>(</big><em>parent</em>, <em>value</em>, <em>label</em><big>)</big><a class="headerlink" href="#hugh.forms.GroupCheckbox" title="Permalink to this definition">¶</a></dt>
+<dd>A checkbox in an input group.</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.HiddenInput">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">HiddenInput</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.HiddenInput" title="Permalink to this definition">¶</a></dt>
+<dd>A hidden input field for text.</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.HiddenModelField">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">HiddenModelField</tt><big>(</big><em>model</em>, <em>key=None</em>, <em>required=False</em>, <em>message=None</em>, <em>validators=None</em>, <em>widget=None</em>, <em>messages=None</em>, <em>default=no default</em><big>)</big><a class="headerlink" href="#hugh.forms.HiddenModelField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A hidden field that points to a model identified by primary key.
+Can be used to pass models through a form.</p>
+<dl class="attribute">
+<dt id="hugh.forms.HiddenModelField.widget">
+<tt class="descname">widget</tt><a class="headerlink" href="#hugh.forms.HiddenModelField.widget" title="Permalink to this definition">¶</a></dt>
+<dd>alias of <a title="hugh.forms.HiddenInput" class="reference internal" href="#hugh.forms.HiddenInput"><tt class="xref docutils literal"><span class="pre">HiddenInput</span></tt></a></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.Input">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">Input</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.Input" title="Permalink to this definition">¶</a></dt>
+<dd>A widget that is a HTML input field.</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.IntegerField">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">IntegerField</tt><big>(</big><em>label=None</em>, <em>help_text=None</em>, <em>required=False</em>, <em>min_value=None</em>, <em>max_value=None</em>, <em>validators=None</em>, <em>widget=None</em>, <em>messages=None</em>, <em>default=no default</em><big>)</big><a class="headerlink" href="#hugh.forms.IntegerField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Field for integers.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">field</span> <span class="o">=</span> <span class="n">IntegerField</span><span class="p">(</span><span class="n">min_value</span><span class="o">=</span><span class="mf">0</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mf">99</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field</span><span class="p">(</span><span class="s">&#39;13&#39;</span><span class="p">)</span>
+<span class="go">13</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">field</span><span class="p">(</span><span class="s">&#39;thirteen&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  <span class="c">...</span>
+<span class="nc">ValidationError</span>: <span class="n-Identifier">Please enter a whole number.</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">field</span><span class="p">(</span><span class="s">&#39;193&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  <span class="c">...</span>
+<span class="nc">ValidationError</span>: <span class="n-Identifier">Ensure this value is less than or equal to 99.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.InternalWidget">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">InternalWidget</tt><big>(</big><em>parent</em><big>)</big><a class="headerlink" href="#hugh.forms.InternalWidget" title="Permalink to this definition">¶</a></dt>
+<dd>Special widgets are widgets that can&#8217;t be used on arbitrary
+form fields but belong to others.</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.Label">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">Label</tt><big>(</big><em>text</em>, <em>linked_to=None</em><big>)</big><a class="headerlink" href="#hugh.forms.Label" title="Permalink to this definition">¶</a></dt>
+<dd>Holds a label.</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.LineSeparated">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">LineSeparated</tt><big>(</big><em>field</em>, <em>label=None</em>, <em>help_text=None</em>, <em>min_size=None</em>, <em>max_size=None</em>, <em>sep=u'</em>, <em>'</em>, <em>validators=None</em>, <em>widget=None</em>, <em>messages=None</em>, <em>default=no default</em><big>)</big><a class="headerlink" href="#hugh.forms.LineSeparated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Works like <cite>CommaSeparated</cite> but uses multiple lines:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">field</span> <span class="o">=</span> <span class="n">LineSeparated</span><span class="p">(</span><span class="n">IntegerField</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field</span><span class="p">(</span><span class="s">u&#39;1</span><span class="se">\n</span><span class="s">2</span><span class="se">\n</span><span class="s">3&#39;</span><span class="p">)</span>
+<span class="go">[1, 2, 3]</span>
+</pre></div>
+</div>
+<p>The default widget is a <cite>Textarea</cite> and taht is pretty much the only thing
+that makes sense for this widget.</p>
+<dl class="attribute">
+<dt id="hugh.forms.LineSeparated.widget">
+<tt class="descname">widget</tt><a class="headerlink" href="#hugh.forms.LineSeparated.widget" title="Permalink to this definition">¶</a></dt>
+<dd>alias of <a title="hugh.forms.Textarea" class="reference internal" href="#hugh.forms.Textarea"><tt class="xref docutils literal"><span class="pre">Textarea</span></tt></a></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.ListWidget">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">ListWidget</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.ListWidget" title="Permalink to this definition">¶</a></dt>
+<dd>Special widget for list-like fields.</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.Mapping">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">Mapping</tt><big>(</big><em>*args</em>, <em>**fields</em><big>)</big><a class="headerlink" href="#hugh.forms.Mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a set of fields to a dictionary of values.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">field</span> <span class="o">=</span> <span class="n">Mapping</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">TextField</span><span class="p">(),</span> <span class="n">age</span><span class="o">=</span><span class="n">IntegerField</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field</span><span class="p">({</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">u&#39;John Doe&#39;</span><span class="p">,</span> <span class="s">&#39;age&#39;</span><span class="p">:</span> <span class="s">u&#39;42&#39;</span><span class="p">})</span>
+<span class="go">{&#39;age&#39;: 42, &#39;name&#39;: u&#39;John Doe&#39;}</span>
+</pre></div>
+</div>
+<p>Although it&#8217;s possible to reassign the widget after field construction
+it&#8217;s not recommended because the <cite>MappingWidget</cite> is the only builtin
+widget that is able to handle mapping structures.</p>
+<dl class="attribute">
+<dt id="hugh.forms.Mapping.widget">
+<tt class="descname">widget</tt><a class="headerlink" href="#hugh.forms.Mapping.widget" title="Permalink to this definition">¶</a></dt>
+<dd>alias of <a title="hugh.forms.MappingWidget" class="reference internal" href="#hugh.forms.MappingWidget"><tt class="xref docutils literal"><span class="pre">MappingWidget</span></tt></a></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.MappingWidget">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">MappingWidget</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.MappingWidget" title="Permalink to this definition">¶</a></dt>
+<dd>Special widget for dict-like fields.</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.ModelField">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">ModelField</tt><big>(</big><em>model</em>, <em>key=None</em>, <em>label=None</em>, <em>help_text=None</em>, <em>required=False</em>, <em>message=None</em>, <em>validators=None</em>, <em>widget=None</em>, <em>messages=None</em>, <em>default=no default</em>, <em>on_not_found=None</em><big>)</big><a class="headerlink" href="#hugh.forms.ModelField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A field that queries for a model.</p>
+<p>The first argument is the name of the model, the second the named
+argument for <cite>filter_by</cite> (eg: <cite>User</cite> and <tt class="docutils literal"><span class="pre">'username'</span></tt>).  If the
+key is not given (None) the primary key is assumed.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.MultiChoiceField">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">MultiChoiceField</tt><big>(</big><em>label=None</em>, <em>help_text=None</em>, <em>choices=None</em>, <em>min_size=None</em>, <em>max_size=None</em>, <em>validators=None</em>, <em>widget=None</em>, <em>messages=None</em>, <em>default=no default</em><big>)</big><a class="headerlink" href="#hugh.forms.MultiChoiceField" title="Permalink to this definition">¶</a></dt>
+<dd>A field that lets a user select multiple choices.</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.Multiple">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">Multiple</tt><big>(</big><em>field</em>, <em>label=None</em>, <em>help_text=None</em>, <em>min_size=None</em>, <em>max_size=None</em>, <em>validators=None</em>, <em>widget=None</em>, <em>messages=None</em>, <em>default=no default</em><big>)</big><a class="headerlink" href="#hugh.forms.Multiple" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a single field to a sequence of values.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">field</span> <span class="o">=</span> <span class="n">Multiple</span><span class="p">(</span><span class="n">IntegerField</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field</span><span class="p">([</span><span class="s">u&#39;1&#39;</span><span class="p">,</span> <span class="s">u&#39;2&#39;</span><span class="p">,</span> <span class="s">u&#39;3&#39;</span><span class="p">])</span>
+<span class="go">[1, 2, 3]</span>
+</pre></div>
+</div>
+<p>Recommended widgets:</p>
+<ul class="simple">
+<li><cite>ListWidget</cite> &#8211; the default one and useful if multiple complex
+fields are in use.</li>
+<li><cite>CheckboxGroup</cite> &#8211; useful in combination with choices</li>
+<li><cite>SelectBoxWidget</cite> &#8211; useful in combination with choices</li>
+</ul>
+<dl class="attribute">
+<dt id="hugh.forms.Multiple.widget">
+<tt class="descname">widget</tt><a class="headerlink" href="#hugh.forms.Multiple.widget" title="Permalink to this definition">¶</a></dt>
+<dd>alias of <a title="hugh.forms.ListWidget" class="reference internal" href="#hugh.forms.ListWidget"><tt class="xref docutils literal"><span class="pre">ListWidget</span></tt></a></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="hugh.forms.MultipleValidationErrors">
+<em class="property">
+exception </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">MultipleValidationErrors</tt><big>(</big><em>errors</em><big>)</big><a class="headerlink" href="#hugh.forms.MultipleValidationErrors" title="Permalink to this definition">¶</a></dt>
+<dd>A validation error subclass for multiple errors raised by
+subfields.  This is used by the mapping and list fields.</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.PasswordInput">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">PasswordInput</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.PasswordInput" title="Permalink to this definition">¶</a></dt>
+<dd>A widget that holds a password.</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.RadioButton">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">RadioButton</tt><big>(</big><em>parent</em>, <em>value</em>, <em>label</em><big>)</big><a class="headerlink" href="#hugh.forms.RadioButton" title="Permalink to this definition">¶</a></dt>
+<dd>A radio button in an input group.</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.RadioButtonGroup">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">RadioButtonGroup</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.RadioButtonGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>A group of radio buttons.</p>
+<dl class="attribute">
+<dt id="hugh.forms.RadioButtonGroup.subwidget">
+<tt class="descname">subwidget</tt><a class="headerlink" href="#hugh.forms.RadioButtonGroup.subwidget" title="Permalink to this definition">¶</a></dt>
+<dd>alias of <a title="hugh.forms.RadioButton" class="reference internal" href="#hugh.forms.RadioButton"><tt class="xref docutils literal"><span class="pre">RadioButton</span></tt></a></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.SelectBox">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">SelectBox</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.SelectBox" title="Permalink to this definition">¶</a></dt>
+<dd>A select box.</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.TextField">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">TextField</tt><big>(</big><em>label=None</em>, <em>help_text=None</em>, <em>required=False</em>, <em>min_length=None</em>, <em>max_length=None</em>, <em>validators=None</em>, <em>widget=None</em>, <em>messages=None</em>, <em>default=no default</em><big>)</big><a class="headerlink" href="#hugh.forms.TextField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Field for strings.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">field</span> <span class="o">=</span> <span class="n">TextField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mf">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field</span><span class="p">(</span><span class="s">&#39;foo bar&#39;</span><span class="p">)</span>
+<span class="go">u&#39;foo bar&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  <span class="c">...</span>
+<span class="nc">ValidationError</span>: <span class="n-Identifier">This field is required.</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="hugh.forms.TextField.should_validate">
+<tt class="descname">should_validate</tt><big>(</big><em>value</em><big>)</big><a class="headerlink" href="#hugh.forms.TextField.should_validate" title="Permalink to this definition">¶</a></dt>
+<dd>Validate if the string is not empty.</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.TextInput">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">TextInput</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.TextInput" title="Permalink to this definition">¶</a></dt>
+<dd><p>A widget that holds text.</p>
+<p>If this widget&#8217;s field has a &#8220;max_length&#8221; attribute it will be set in the
+form field:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">text_widget</span><span class="p">(</span><span class="o">**</span><span class="n">field_attrs</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">_make_widget</span><span class="p">(</span><span class="n">TextField</span><span class="p">(</span><span class="o">**</span><span class="n">field_attrs</span><span class="p">),</span> <span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">{})</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">text_widget</span><span class="p">()()</span>
+<span class="go">&lt;input type=&quot;text&quot; name=&quot;name&quot; value=&quot;&quot; id=&quot;f_name&quot;&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">text_widget</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mf">100</span><span class="p">)()</span>
+<span class="go">&lt;input maxlength=&quot;100&quot; type=&quot;text&quot; name=&quot;name&quot; value=&quot;&quot; id=&quot;f_name&quot;&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.Textarea">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">Textarea</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.Textarea" title="Permalink to this definition">¶</a></dt>
+<dd>Displays a textarea.</dd></dl>
+
+<dl class="class">
+<dt id="hugh.forms.Widget">
+<em class="property">
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">Widget</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.Widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Baseclass for all widgets.  All widgets share a common interface
+that can be used from within templates.</p>
+<p>Take this form as an example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">LoginForm</span><span class="p">(</span><span class="n">Form</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">username</span> <span class="o">=</span> <span class="n">TextField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">password</span> <span class="o">=</span> <span class="n">TextField</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">PasswordInput</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">flags</span> <span class="o">=</span> <span class="n">MultiChoiceField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="mf">1</span><span class="p">,</span> <span class="mf">2</span><span class="p">,</span> <span class="mf">3</span><span class="p">])</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">form</span> <span class="o">=</span> <span class="n">LoginForm</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">form</span><span class="o">.</span><span class="n">validate</span><span class="p">({</span><span class="s">&#39;username&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="s">&#39;password&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
+<span class="gp">... </span>               <span class="s">&#39;flags&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1</span><span class="p">,</span> <span class="mf">3</span><span class="p">]})</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">widget</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">as_widget</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You can get the subwidgets by using the normal indexing operators:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">username</span> <span class="o">=</span> <span class="n">widget</span><span class="p">[</span><span class="s">&#39;username&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">password</span> <span class="o">=</span> <span class="n">widget</span><span class="p">[</span><span class="s">&#39;password&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>To render a widget you can usually invoke the <cite>render()</cite> method.  All
+keyword parameters are used as HTML attribute in the resulting tag.
+You can also call the widget itself (<tt class="docutils literal"><span class="pre">username()</span></tt> instead of
+<tt class="docutils literal"><span class="pre">username.render()</span></tt>) which does the same if there are no errors for
+the field but adds the default error list after the widget if there
+are errors.</p>
+<p>Widgets have some public attributes:</p>
+<p><cite>errors</cite></p>
+<blockquote>
+<p>gives the list of errors:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">username</span><span class="o">.</span><span class="n">errors</span>
+<span class="go">[u&#39;This field is required.&#39;]</span>
+</pre></div>
+</div>
+<p>This error list is printable:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">username</span><span class="o">.</span><span class="n">errors</span><span class="p">()</span>
+<span class="go">&lt;ul class=&quot;errors&quot;&gt;&lt;li&gt;This field is required.&lt;/li&gt;&lt;/ul&gt;</span>
+</pre></div>
+</div>
+<p>Like any other sequence that yields list items it provides
+<cite>as_ul</cite> and <cite>as_ol</cite> methods:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">username</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">as_ul</span><span class="p">()</span>
+<span class="go">&lt;ul&gt;&lt;li&gt;This field is required.&lt;/li&gt;&lt;/ul&gt;</span>
+</pre></div>
+</div>
+<p>Keep in mind that <tt class="docutils literal"><span class="pre">widget.errors()</span></tt> is equivalent to
+<tt class="docutils literal"><span class="pre">widget.errors.as_ul(class_='errors',</span> <span class="pre">hide_empty=True)</span></tt>.</p>
+</blockquote>
+<p><cite>value</cite></p>
+<blockquote>
+<p>returns the value of the widget as primitive.  For basic
+widgets this is always a string, for widgets with subwidgets or
+widgets with multiple values a dict or a list:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">username</span><span class="o">.</span><span class="n">value</span>
+<span class="go">u&#39;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">widget</span><span class="p">[</span><span class="s">&#39;flags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+<span class="go">[u&#39;1&#39;, u&#39;3&#39;]</span>
+</pre></div>
+</div>
+</blockquote>
+<p><cite>name</cite> gives you the name of the field for form submissions:</p>
+<blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">username</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;username&#39;</span>
+</pre></div>
+</div>
+<p>Please keep in mind that the name is not always that obvious.  Zine
+supports nested form fields so it&#8217;s a good idea to always use the
+name attribute.</p>
+</blockquote>
+<p><cite>id</cite></p>
+<blockquote>
+<p>gives you the default domain for the widget.  This is either none
+if there is no idea for the field or <cite>f_</cite> + the field name with
+underscores instead of dots:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">username</span><span class="o">.</span><span class="n">id</span>
+<span class="go">&#39;f_username&#39;</span>
+</pre></div>
+</div>
+</blockquote>
+<p><cite>all_errors</cite></p>
+<blockquote>
+like <cite>errors</cite> but also contains the errors of child
+widgets.</blockquote>
+<dl class="attribute">
+<dt id="hugh.forms.Widget.all_errors">
+<tt class="descname">all_errors</tt><a class="headerlink" href="#hugh.forms.Widget.all_errors" title="Permalink to this definition">¶</a></dt>
+<dd>The current errors and the errors of all child widgets.</dd></dl>
+
+<dl class="method">
+<dt id="hugh.forms.Widget.as_dd">
+<tt class="descname">as_dd</tt><big>(</big><em>**attrs</em><big>)</big><a class="headerlink" href="#hugh.forms.Widget.as_dd" title="Permalink to this definition">¶</a></dt>
+<dd>Return a dt/dd item.</dd></dl>
+
+<dl class="attribute">
+<dt id="hugh.forms.Widget.errors">
+<tt class="descname">errors</tt><a class="headerlink" href="#hugh.forms.Widget.errors" title="Permalink to this definition">¶</a></dt>
+<dd>The direct errors of this widget.</dd></dl>
+
+<dl class="attribute">
+<dt id="hugh.forms.Widget.help_text">
+<tt class="descname">help_text</tt><a class="headerlink" href="#hugh.forms.Widget.help_text" title="Permalink to this definition">¶</a></dt>
+<dd>The help text of the widget.</dd></dl>
+
+<dl class="method">
+<dt id="hugh.forms.Widget.hidden">
+<tt class="descname">hidden</tt><big>(</big><big>)</big><a class="headerlink" href="#hugh.forms.Widget.hidden" title="Permalink to this definition">¶</a></dt>
+<dd>Return one or multiple hidden fields for the current value.  This
+also handles subwidgets.  This is useful for transparent form data
+passing.</dd></dl>
+
+<dl class="attribute">
+<dt id="hugh.forms.Widget.id">
+<tt class="descname">id</tt><a class="headerlink" href="#hugh.forms.Widget.id" title="Permalink to this definition">¶</a></dt>
+<dd>The proposed id for this widget.</dd></dl>
+
+<dl class="attribute">
+<dt id="hugh.forms.Widget.label">
+<tt class="descname">label</tt><a class="headerlink" href="#hugh.forms.Widget.label" title="Permalink to this definition">¶</a></dt>
+<dd>The label for the widget.</dd></dl>
+
+<dl class="attribute">
+<dt id="hugh.forms.Widget.localname">
+<tt class="descname">localname</tt><a class="headerlink" href="#hugh.forms.Widget.localname" title="Permalink to this definition">¶</a></dt>
+<dd>The local name of the field.</dd></dl>
+
+<dl class="attribute">
+<dt id="hugh.forms.Widget.required">
+<tt class="descname">required</tt><a class="headerlink" href="#hugh.forms.Widget.required" title="Permalink to this definition">¶</a></dt>
+<dd>Whether the field is required.</dd></dl>
+
+<dl class="attribute">
+<dt id="hugh.forms.Widget.value">
+<tt class="descname">value</tt><a class="headerlink" href="#hugh.forms.Widget.value" title="Permalink to this definition">¶</a></dt>
+<dd>The primitive value for this widget.</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="hugh.forms.fill_dict">
+<tt class="descclassname">hugh.forms.</tt><tt class="descname">fill_dict</tt><big>(</big><em>_dict</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#hugh.forms.fill_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>A helper to fill the dict passed with the items passed as keyword
+arguments if they are not yet in the dict.  If the dict passed was
+<cite>None</cite> a new dict is created and returned.</p>
+<p>This can be used to prepopulate initial dicts in overriden constructors:</p>
+<blockquote>
+<dl class="docutils">
+<dt>class MyForm(forms.Form):</dt>
+<dd><p class="first">foo = forms.TextField()
+bar = forms.TextField()</p>
+<dl class="last docutils">
+<dt>def __init__(self, initial=None):</dt>
+<dd><dl class="first docutils">
+<dt>forms.Form.__init__(self, forms.fill_dict(initial,</dt>
+<dd>foo=&#8221;nothing&#8221;,
+bar=&#8221;nothing&#8221;</dd>
+</dl>
+<p class="last">))</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="hugh.forms.set_fields">
+<tt class="descclassname">hugh.forms.</tt><tt class="descname">set_fields</tt><big>(</big><em>obj</em>, <em>data</em>, <em>fields</em><big>)</big><a class="headerlink" href="#hugh.forms.set_fields" title="Permalink to this definition">¶</a></dt>
+<dd>Set all the fields on obj with data if changed.</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-hugh.validators">
+<h2>Module <tt class="xref docutils literal"><span class="pre">hugh.validators</span></tt><a class="headerlink" href="#module-hugh.validators" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="hugh-validators">
+<h3>hugh.validators<a class="headerlink" href="#hugh-validators" title="Permalink to this headline">¶</a></h3>
+<p>This module implements various functions for validation of miscellaneous
+things, e.g. urls.</p>
+<dl class="docutils">
+<dt>TODO: convert most of the functions in this module into functions that</dt>
+<dd>raise <cite>forms.ValidationError</cite>s.  They are used in hand validated
+forms currently which should be replaced by real forms soon.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">copyright:</th><td class="field-body"><ol class="first loweralpha simple" start="3">
+<li>2009 by the Zine Team, see AUTHORS for more details.</li>
+</ol>
+</td>
+</tr>
+<tr class="field"><th class="field-name">license:</th><td class="field-body"><p class="first last">BSD, see LICENSE for more details.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="exception">
+<dt id="hugh.validators.ValidationError">
+<em class="property">
+exception </em><tt class="descclassname">hugh.validators.</tt><tt class="descname">ValidationError</tt><big>(</big><em>message</em><big>)</big><a class="headerlink" href="#hugh.validators.ValidationError" title="Permalink to this definition">¶</a></dt>
+<dd>Exception raised when invalid data is encountered.</dd></dl>
+
+<dl class="function">
+<dt id="hugh.validators.check">
+<tt class="descclassname">hugh.validators.</tt><tt class="descname">check</tt><big>(</big><em>validator</em>, <em>value</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#hugh.validators.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call a validator and return True if it&#8217;s valid, False otherwise.
+The first argument is the validator, the second a value.  All other
+arguments are forwarded to the validator function.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">check</span><span class="p">(</span><span class="n">is_valid_email</span><span class="p">,</span> <span class="s">&#39;foo@bar.com&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="hugh.validators.is_netaddr">
+<tt class="descclassname">hugh.validators.</tt><tt class="descname">is_netaddr</tt><big>(</big><big>)</big><a class="headerlink" href="#hugh.validators.is_netaddr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the string given is a net address.  Either an IP or a
+hostname.  This currently does not support ipv6 (XXX!!)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">check</span><span class="p">(</span><span class="n">is_netaddr</span><span class="p">,</span> <span class="s">&#39;localhost&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">check</span><span class="p">(</span><span class="n">is_netaddr</span><span class="p">,</span> <span class="s">&#39;localhost:443&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">check</span><span class="p">(</span><span class="n">is_netaddr</span><span class="p">,</span> <span class="s">&#39;just something else&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="hugh.validators.is_not_whitespace_only">
+<tt class="descclassname">hugh.validators.</tt><tt class="descname">is_not_whitespace_only</tt><big>(</big><big>)</big><a class="headerlink" href="#hugh.validators.is_not_whitespace_only" title="Permalink to this definition">¶</a></dt>
+<dd>Make sure the value does consist of at least one
+non-whitespace character</dd></dl>
+
+<dl class="function">
+<dt id="hugh.validators.is_valid_email">
+<tt class="descclassname">hugh.validators.</tt><tt class="descname">is_valid_email</tt><big>(</big><em>message=None</em><big>)</big><a class="headerlink" href="#hugh.validators.is_valid_email" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the string passed is a valid mail address.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">check</span><span class="p">(</span><span class="n">is_valid_email</span><span class="p">,</span> <span class="s">&#39;somebody@example.com&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">check</span><span class="p">(</span><span class="n">is_valid_email</span><span class="p">,</span> <span class="s">&#39;somebody AT example DOT com&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">check</span><span class="p">(</span><span class="n">is_valid_email</span><span class="p">,</span> <span class="s">&#39;some random string&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Because e-mail validation is painfully complex we just check the first
+part of the email if it looks okay (comments are not handled!) and ignore
+the second.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hugh.validators.is_valid_slug">
+<tt class="descclassname">hugh.validators.</tt><tt class="descname">is_valid_slug</tt><big>(</big><em>allow_slash=True</em><big>)</big><a class="headerlink" href="#hugh.validators.is_valid_slug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value given is a valid slug:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">check</span><span class="p">(</span><span class="n">is_valid_slug</span><span class="p">,</span> <span class="s">&#39;/foo&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">check</span><span class="p">(</span><span class="n">is_valid_slug</span><span class="p">,</span> <span class="s">&#39;foo/bar&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="hugh.validators.is_valid_url">
+<tt class="descclassname">hugh.validators.</tt><tt class="descname">is_valid_url</tt><big>(</big><em>message=None</em><big>)</big><a class="headerlink" href="#hugh.validators.is_valid_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the string passed is a valid URL.  We also blacklist some
+url schemes like javascript for security reasons.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">check</span><span class="p">(</span><span class="n">is_valid_url</span><span class="p">,</span> <span class="s">&#39;http://pocoo.org/&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">check</span><span class="p">(</span><span class="n">is_valid_url</span><span class="p">,</span> <span class="s">&#39;http://zine.pocoo.org/archive&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">check</span><span class="p">(</span><span class="n">is_valid_url</span><span class="p">,</span> <span class="s">&#39;zine.pocoo.org/archive&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">check</span><span class="p">(</span><span class="n">is_valid_url</span><span class="p">,</span> <span class="s">&#39;javascript:alert(&quot;Zine rocks!&quot;);&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="hugh.validators.is_valid_url_prefix">
+<tt class="descclassname">hugh.validators.</tt><tt class="descname">is_valid_url_prefix</tt><big>(</big><big>)</big><a class="headerlink" href="#hugh.validators.is_valid_url_prefix" title="Permalink to this definition">¶</a></dt>
+<dd>Validates URL parts.</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">API Documentation</a><ul>
+<li><a class="reference external" href="#module-hugh.forms">Module <tt class="docutils literal"><span class="pre">hugh.forms</span></tt></a><ul>
+<li><a class="reference external" href="#hugh-forms">hugh.forms</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#module-hugh.validators">Module <tt class="docutils literal"><span class="pre">hugh.validators</span></tt></a><ul>
+<li><a class="reference external" href="#hugh-validators">hugh.validators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="index.html"
+                                  title="previous chapter">Welcome to Hugh&#8217;s documentation!</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/api.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Hugh’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">Hugh v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Matt Good.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.2.
+    </div>
+  </body>
+</html>
