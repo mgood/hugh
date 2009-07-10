@@ -95,7 +95,7 @@ class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">Boolea
 <dl class="class">
 <dt id="hugh.forms.Checkbox">
 <em class="property">
-class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">Checkbox</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.Checkbox" title="Permalink to this definition">¶</a></dt>
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">Checkbox</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em>, <em>id_prefix=None</em><big>)</big><a class="headerlink" href="#hugh.forms.Checkbox" title="Permalink to this definition">¶</a></dt>
 <dd><p>A simple checkbox.</p>
 <dl class="method">
 <dt id="hugh.forms.Checkbox.as_dd">
@@ -399,8 +399,10 @@ situation the edit page would return a page not found.</p>
 
 <dl class="method">
 <dt id="hugh.forms.Form.as_widget">
-<tt class="descname">as_widget</tt><big>(</big><big>)</big><a class="headerlink" href="#hugh.forms.Form.as_widget" title="Permalink to this definition">¶</a></dt>
-<dd>Return the form as widget.</dd></dl>
+<tt class="descname">as_widget</tt><big>(</big><em>id_prefix=None</em><big>)</big><a class="headerlink" href="#hugh.forms.Form.as_widget" title="Permalink to this definition">¶</a></dt>
+<dd>Return the form as widget. If an id_prefix is provided this will
+be added to the id attributes of all fields. This can be used to avoid
+id conflicts between multiple forms on the same page.</dd></dl>
 
 <dl class="attribute">
 <dt id="hugh.forms.Form.csrf_token">
@@ -518,7 +520,7 @@ class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">GroupC
 <dl class="class">
 <dt id="hugh.forms.HiddenInput">
 <em class="property">
-class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">HiddenInput</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.HiddenInput" title="Permalink to this definition">¶</a></dt>
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">HiddenInput</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em>, <em>id_prefix=None</em><big>)</big><a class="headerlink" href="#hugh.forms.HiddenInput" title="Permalink to this definition">¶</a></dt>
 <dd>A hidden input field for text.</dd></dl>
 
 <dl class="class">
@@ -537,7 +539,7 @@ Can be used to pass models through a form.</p>
 <dl class="class">
 <dt id="hugh.forms.Input">
 <em class="property">
-class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">Input</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.Input" title="Permalink to this definition">¶</a></dt>
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">Input</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em>, <em>id_prefix=None</em><big>)</big><a class="headerlink" href="#hugh.forms.Input" title="Permalink to this definition">¶</a></dt>
 <dd>A widget that is a HTML input field.</dd></dl>
 
 <dl class="class">
@@ -678,7 +680,7 @@ subfields.  This is used by the mapping and list fields.</dd></dl>
 <dl class="class">
 <dt id="hugh.forms.PasswordInput">
 <em class="property">
-class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">PasswordInput</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.PasswordInput" title="Permalink to this definition">¶</a></dt>
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">PasswordInput</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em>, <em>id_prefix=None</em><big>)</big><a class="headerlink" href="#hugh.forms.PasswordInput" title="Permalink to this definition">¶</a></dt>
 <dd>A widget that holds a password.</dd></dl>
 
 <dl class="class">
@@ -702,7 +704,7 @@ class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">RadioB
 <dl class="class">
 <dt id="hugh.forms.SelectBox">
 <em class="property">
-class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">SelectBox</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.SelectBox" title="Permalink to this definition">¶</a></dt>
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">SelectBox</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em>, <em>id_prefix=None</em><big>)</big><a class="headerlink" href="#hugh.forms.SelectBox" title="Permalink to this definition">¶</a></dt>
 <dd>A select box.</dd></dl>
 
 <dl class="class">
@@ -729,7 +731,7 @@ class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">TextFi
 <dl class="class">
 <dt id="hugh.forms.TextInput">
 <em class="property">
-class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">TextInput</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.TextInput" title="Permalink to this definition">¶</a></dt>
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">TextInput</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em>, <em>id_prefix=None</em><big>)</big><a class="headerlink" href="#hugh.forms.TextInput" title="Permalink to this definition">¶</a></dt>
 <dd><p>A widget that holds text.</p>
 <p>If this widget&#8217;s field has a &#8220;max_length&#8221; attribute it will be set in the
 form field:</p>
@@ -750,13 +752,13 @@ form field:</p>
 <dl class="class">
 <dt id="hugh.forms.Textarea">
 <em class="property">
-class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">Textarea</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.Textarea" title="Permalink to this definition">¶</a></dt>
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">Textarea</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em>, <em>id_prefix=None</em><big>)</big><a class="headerlink" href="#hugh.forms.Textarea" title="Permalink to this definition">¶</a></dt>
 <dd>Displays a textarea.</dd></dl>
 
 <dl class="class">
 <dt id="hugh.forms.Widget">
 <em class="property">
-class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">Widget</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.Widget" title="Permalink to this definition">¶</a></dt>
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">Widget</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em>, <em>id_prefix=None</em><big>)</big><a class="headerlink" href="#hugh.forms.Widget" title="Permalink to this definition">¶</a></dt>
 <dd><p>Baseclass for all widgets.  All widgets share a common interface
 that can be used from within templates.</p>
 <p>Take this form as an example:</p>
