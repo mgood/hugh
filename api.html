@@ -117,7 +117,7 @@ class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">Checkb
 <dl class="class">
 <dt id="hugh.forms.CheckboxGroup">
 <em class="property">
-class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">CheckboxGroup</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.CheckboxGroup" title="Permalink to this definition">¶</a></dt>
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">CheckboxGroup</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em>, <em>id_prefix=None</em><big>)</big><a class="headerlink" href="#hugh.forms.CheckboxGroup" title="Permalink to this definition">¶</a></dt>
 <dd><p>A group of checkboxes.</p>
 <dl class="attribute">
 <dt id="hugh.forms.CheckboxGroup.subwidget">
@@ -400,9 +400,25 @@ situation the edit page would return a page not found.</p>
 <dl class="method">
 <dt id="hugh.forms.Form.as_widget">
 <tt class="descname">as_widget</tt><big>(</big><em>id_prefix=None</em><big>)</big><a class="headerlink" href="#hugh.forms.Form.as_widget" title="Permalink to this definition">¶</a></dt>
-<dd>Return the form as widget. If an id_prefix is provided this will
+<dd><p>Return the form as widget. If an id_prefix is provided this will
 be added to the id attributes of all fields. This can be used to avoid
-id conflicts between multiple forms on the same page.</dd></dl>
+id conflicts between multiple forms on the same page.</p>
+<p>The default rendering of a form field includes only the name of the
+field, so if multiple forms on the same page both had a field named
+&#8220;the_field&#8221; their ids would conflict.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">MyForm</span><span class="p">(</span><span class="n">Form</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">the_field</span> <span class="o">=</span> <span class="n">TextField</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MyForm</span><span class="p">()</span><span class="o">.</span><span class="n">as_widget</span><span class="p">()[</span><span class="s">&#39;the_field&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+<span class="go">u&#39;&lt;input type=&quot;text&quot; name=&quot;the_field&quot; value=&quot;&quot; id=&quot;f_the_field&quot;&gt;&#39;</span>
+</pre></div>
+</div>
+<p>If an id_prefix is provided it is inserted before the field name so
+that each form&#8217;s fields will have unique ids.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">MyForm</span><span class="p">()</span><span class="o">.</span><span class="n">as_widget</span><span class="p">(</span><span class="n">id_prefix</span><span class="o">=</span><span class="s">&quot;my_form&quot;</span><span class="p">)[</span><span class="s">&#39;the_field&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+<span class="go">u&#39;&lt;input type=&quot;text&quot; name=&quot;the_field&quot; value=&quot;&quot; id=&quot;f_my_form_the_field&quot;&gt;&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="hugh.forms.Form.csrf_token">
@@ -692,7 +708,7 @@ class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">RadioB
 <dl class="class">
 <dt id="hugh.forms.RadioButtonGroup">
 <em class="property">
-class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">RadioButtonGroup</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em><big>)</big><a class="headerlink" href="#hugh.forms.RadioButtonGroup" title="Permalink to this definition">¶</a></dt>
+class </em><tt class="descclassname">hugh.forms.</tt><tt class="descname">RadioButtonGroup</tt><big>(</big><em>field</em>, <em>name</em>, <em>value</em>, <em>all_errors</em>, <em>id_prefix=None</em><big>)</big><a class="headerlink" href="#hugh.forms.RadioButtonGroup" title="Permalink to this definition">¶</a></dt>
 <dd><p>A group of radio buttons.</p>
 <dl class="attribute">
 <dt id="hugh.forms.RadioButtonGroup.subwidget">
